@@ -37,4 +37,24 @@ public class XMLtag {
 
     return null;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof XMLtag) {
+      XMLtag XMLtag_obj = (XMLtag) obj;
+
+      if (name.equals(XMLtag_obj.name)) {
+        if (attributes.length == XMLtag_obj.attributes.length) {
+          for (int i = 0; i < attributes.length; i++) {
+            if (!attributes[i].equals(XMLtag_obj.attributes[i]))
+              return false;
+          }
+
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
 }
