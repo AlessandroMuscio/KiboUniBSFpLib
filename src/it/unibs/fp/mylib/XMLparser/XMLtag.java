@@ -50,4 +50,24 @@ public class XMLTag {
     return "XMLTag{" + "tagName='" + tagName + '\'' + ", tagValue='" + tagValue + '\'' + ", attributes="
         + Arrays.toString(attributes) + '}';
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof XMLTag) {
+      XMLTag XMLtag_obj = (XMLTag) obj;
+
+      if (name.equals(XMLtag_obj.name)) {
+        if (attributes.length == XMLtag_obj.attributes.length) {
+          for (int i = 0; i < attributes.length; i++) {
+            if (!attributes[i].equals(XMLtag_obj.attributes[i]))
+              return false;
+          }
+
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
 }
