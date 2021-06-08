@@ -1,40 +1,53 @@
-package it.unibs.fp.mylib.XMLparser;
+package it.unibs.fp.mylib.XMLParser;
 
-public class XMLtag {
-  private String name;
-  private XMLattribute[] attributes;
+import java.util.Arrays;
 
-  public XMLtag(String name, XMLattribute... attributes) {
-    this.name = name;
+public class XMLTag {
+  private String tagName;
+  private String tagValue;
+  private XMLAttribute[] attributes;
+
+  public XMLTag(String tagName, String tagValue, XMLAttribute... attributes) {
+    this.tagName = tagName;
+    this.tagValue = tagValue;
     this.attributes = attributes;
   }
 
-  public XMLtag(String name) {
-    this(name, new XMLattribute[0]);
+  public XMLTag(String tagName, XMLAttribute... attributes) {
+    this(tagName, null, attributes);
   }
 
-  public String getName() {
-    return name;
+  public XMLTag(String tagName, String tagValue) {
+    this(tagName, tagValue, new XMLAttribute[0]);
   }
 
-  public XMLattribute[] getAttributes() {
+  public XMLTag(String tagName) {
+    this(tagName, (String) null);
+  }
+
+  public String getTagName() {
+    return tagName;
+  }
+
+  public void setTagName(String tagName) {
+    this.tagName = tagName;
+  }
+
+  public String getTagValue() {
+    return tagValue;
+  }
+
+  public void setTagValue(String tagValue) {
+    this.tagValue = tagValue;
+  }
+
+  public XMLAttribute[] getAttributes() {
     return attributes;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setAttributes(XMLattribute[] attributes) {
-    this.attributes = attributes;
-  }
-
-  public XMLattribute searchAttributeByName(String attribute_name) {
-    for (XMLattribute attribute : attributes) {
-      if (name.equals(attribute_name))
-        return attribute;
-    }
-
-    return null;
+  @Override
+  public String toString() {
+    return "XMLTag{" + "tagName='" + tagName + '\'' + ", tagValue='" + tagValue + '\'' + ", attributes="
+        + Arrays.toString(attributes) + '}';
   }
 }
