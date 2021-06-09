@@ -1,4 +1,4 @@
-package it.unibs.fp.mylib.XMLParser;
+package it.unibs.fp.mylib.XMLHandler;
 
 import java.util.HashMap;
 import java.util.function.Consumer;

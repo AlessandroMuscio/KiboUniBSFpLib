@@ -1,6 +1,6 @@
 package it.unibs.fp.mylib.testing;
 
-import it.unibs.fp.mylib.XMLParser.Parsable;
+import it.unibs.fp.mylib.XMLHandler.Parsable;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,6 @@ public class City implements Parsable {
     return START_STRING;
   }
 
-  // Setters
   public void setId(String id) {
     this.id = id;
   }
@@ -63,7 +62,6 @@ public class City implements Parsable {
     connections.add(link);
   }
 
-  // Getters
   public String getId() {
     return id;
   }

@@ -1,4 +1,4 @@
-package it.unibs.fp.mylib.XMLParser;
+package it.unibs.fp.mylib.XMLHandler;
 
 public class XMLAttribute {
   private String name;

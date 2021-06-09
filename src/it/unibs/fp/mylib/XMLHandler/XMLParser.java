@@ -1,4 +1,4 @@
-package it.unibs.fp.mylib.XMLParser;
+package it.unibs.fp.mylib.XMLHandler;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -33,8 +33,6 @@ public class XMLParser {
     }
 
     while (xmlReader.hasNext()) {
-      assert t != null;
-
       switch (xmlReader.getEventType()) {
         case XMLStreamConstants.START_ELEMENT:
           elementName = t.containsAttribute(xmlReader.getLocalName()) ? xmlReader.getLocalName() : null;
