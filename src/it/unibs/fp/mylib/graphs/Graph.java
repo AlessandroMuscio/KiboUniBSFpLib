@@ -1,5 +1,6 @@
 package it.unibs.fp.mylib.graphs;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -126,6 +127,68 @@ public class Graph<N extends DefaultNode, V> {
    */
   public boolean removeEdge(V edge) {
     return edges.remove(edge);
+  }
+
+  /**
+   * Aggiunge una <code>Collection</code> qualsiasi di <strong>nodi</strong> al
+   * <em>Graph</em>
+   * 
+   * @param nodes_to_add La <code>Collection</code> di nodi da aggiungere
+   * @return Un <code>boolean</code> che indica se l'aggiunta è riuscita o meno
+   */
+  public boolean addAllNodes(Collection<N> nodes_to_add) {
+    return nodes.addAll(nodes_to_add);
+  }
+
+  /**
+   * Rimuove una <code>Collection</code> qualsiasi di <strong>nodi</strong> dal
+   * <em>Graph</em>
+   * 
+   * @param nodes_to_remove La <code>Collection</code> di nodi da rimuovere
+   * @return Un <code>boolean</code> che indica se la rimozione è riuscita o meno
+   */
+  public boolean removeAllNodes(Collection<N> nodes_to_remove) {
+    return nodes.removeAll(nodes_to_remove);
+  }
+
+  /**
+   * Aggiunge una <code>Collection</code> qualsiasi di <strong>archi</strong> al
+   * <em>Graph</em>
+   * 
+   * @param edges_to_add La <code>Collection</code> di archi da aggiungere
+   * @return Un <code>boolean</code> che indica se l'aggiunta è riuscita o meno
+   */
+  public boolean addAllEdges(Collection<V> edges_to_add) {
+    return edges.addAll(edges_to_add);
+  }
+
+  /**
+   * Rimuove una <code>Collection</code> qualsiasi di <strong>archi</strong> dal
+   * <em>Graph</em>
+   * 
+   * @param edges_to_remove La <code>Collection</code> di archi da rimuovere
+   * @return Un <code>boolean</code> che indica se la rimozione è riuscita o meno
+   */
+  public boolean removeAllEdges(Collection<V> edges_to_remove) {
+    return edges.removeAll(edges_to_remove);
+  }
+
+  /**
+   * Ritorna una nuova istanza di un grafo identico a <code>this</code>
+   * 
+   * @return Un <code>Graph</code> identico a this
+   */
+  public Graph<N, V> copyGraph() {
+    return new Graph<>(nodes, edges);
+  }
+
+  public N getNodeById(long id) {
+    for (N node : nodes) {
+      if (node.getId() == id)
+        return node;
+    }
+
+    return null;
   }
 
   /**

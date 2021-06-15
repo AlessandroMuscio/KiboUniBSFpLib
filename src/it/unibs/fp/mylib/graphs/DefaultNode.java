@@ -9,25 +9,43 @@ package it.unibs.fp.mylib.graphs;
  */
 public class DefaultNode {
   /**
+   * Tiene traccia del massimo id utilizzato fino ad ora
+   */
+  private static long id_counter = -1;
+  /**
    * Rappresenta l'<strong>id</strong> del nodo
    */
-  private int id;
+  private long id;
 
   /**
    * Crea un oggetto della classe <strong>DefaultNode</strong> specificandone l'id
    * 
    * @param id Indica l'id del <em>DefaultNode</em>
+   * @throws GraphsException Quando l'id è minore di 0
    */
-  public DefaultNode(int id) {
+  public DefaultNode(long id) throws GraphsException {
+    if (id < 0)
+      throw new GraphsException("L'id del nodo deve essere maggiore uguale di 0");
+
+    id_counter = id;
     this.id = id;
+  }
+
+  /**
+   * Crea un oggetto della classe <strong>DefaultNode</strong> assegnando
+   * automaticamente l'id in maniera dinamica
+   */
+  public DefaultNode() {
+    id_counter++;
+    id = id_counter;
   }
 
   /**
    * Restituisce l'<strong>id</strong> di questo <em>DefaultNode</em>
    * 
-   * @return Un <code>int</code> rappresentante l'<strong>id</strong>
+   * @return Un <code>long</code> rappresentante l'<strong>id</strong>
    */
-  public int getId() {
+  public long getId() {
     return id;
   }
 
@@ -36,7 +54,7 @@ public class DefaultNode {
    * 
    * @param id Valore da assegnare all'<strong>id</strong>
    */
-  public void setId(int id) {
+  public void setId(long id) {
     this.id = id;
   }
 
